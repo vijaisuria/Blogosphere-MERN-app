@@ -1,4 +1,4 @@
-import Post from "../Post";
+import Post from "../partials/Post";
 import { useEffect, useState } from "react";
 
 export default function BlogsPage() {

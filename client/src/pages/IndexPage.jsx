@@ -1,19 +1,5 @@
 import "../css/home.css";
 
-const NavBar = () => (
-  <header className="navbar">
-    <div className="navlogo">
-      <i class="fab fa-google-wallet"></i>
-    </div>
-    <div className="nav_item">
-      <div className="navitem"> Home </div>
-      <div className="navitem"> About </div>
-      <div className="navitem"> Gallery </div>
-      <div className="navitem"> Contact Us </div>
-    </div>
-  </header>
-);
-
 const About = () => (
   <div className="about">
     <div className="aboutitem header">Discover the Blogosphere</div>
@@ -22,7 +8,14 @@ const About = () => (
       Thought-Provoking Articles.
     </div>
     <div className="aboutitem buy">
-      <button className="button-home">Explore now</button>
+      <button
+        className="button-home"
+        onClick={() => {
+          window.location.href = "/blogs";
+        }}
+      >
+        Explore now
+      </button>
     </div>
   </div>
 );

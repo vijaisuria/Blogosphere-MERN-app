@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../utils/UserContext";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
