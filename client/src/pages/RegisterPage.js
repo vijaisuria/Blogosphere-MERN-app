@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../css/forms.css";
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   async function register(ev) {
     try {
       ev.preventDefault();
@@ -11,32 +17,69 @@ export default function RegisterPage() {
         body: JSON.stringify({ username, password }),
         headers: { "Content-Type": "application/json" },
       });
+
       if (response.status === 200) {
-        alert("registration successful");
+        toast.success("Registration successful!", {
+          onClose: () => navigate("/login?welcome=true"),
+        });
       } else {
-        alert("registration failed");
+        toast.error("Registration failed. Please try again.");
       }
     } catch (e) {
       console.error(e);
-      alert("registration failed");
+      toast.error("Registration failed. Please try again.");
     }
   }
+
   return (
-    <form className="register" onSubmit={register}>
-      <h1>Register</h1>
-      <input
-        type="text"
-        placeholder="username"
-        value={username}
-        onChange={(ev) => setUsername(ev.target.value)}
+    <div className="register-container">
+      <form className="register-form" onSubmit={register}>
+        <h1>Register</h1>
+        <div className="user-image-container">
+          <img
+            src="https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg"
+            alt="User"
+            className="user-image"
+          />
+        </div>
+
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(ev) => setUsername(ev.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(ev) => setPassword(ev.target.value)}
+        />
+
+        <button className="button-forms register-btn" type="submit">
+          Register
+        </button>
+      </form>
+
+      <div className="create-account-container">
+        <p>
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </div>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        style={{ zIndex: 9999, width: "100%" }}
       />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(ev) => setPassword(ev.target.value)}
-      />
-      <button>Register</button>
-    </form>
+    </div>
   );
 }

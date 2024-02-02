@@ -1,0 +1,237 @@
+.about {
+  height: 95vh;
+  background: rgb(2, 0, 39);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 39, 1) 0%,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 1%,
+    rgba(3, 96, 115, 1) 100%
+  );
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Nunito Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.aboutitem {
+  padding: 10px;
+}
+.header {
+  font-size: 450%;
+}
+.smallinfo {
+  font-size: 180%;
+}
+button {
+  border: 2px solid white;
+  padding: 10px;
+  color: white;
+  font-size: 100%;
+  cursor: pointer;
+}
+.button-home {
+  background: transparent;
+}
+.brief {
+  margin: 5%;
+  display: flex;
+  display-direction: row;
+  margin: 7%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.fa-globe-americas {
+  font-size: 130px;
+  color: #154c79;
+}
+.right {
+  font-family: "Nunito Sans", sans-serif;
+  margin-left: 15%;
+  margin-right: 10%;
+  text-align: left;
+  font-weight: 400;
+  font-size: 120%;
+}
+.whybuy {
+  background-color: #007ece;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  padding: 5%;
+  font-size: 120%;
+}
+.fa-bolt {
+  font-size: 400%;
+  margin-bottom: 20px;
+}
+.fa-university {
+  font-size: 400%;
+  margin-bottom: 20px;
+}
+.fa-heart {
+  font-size: 400%;
+  margin-bottom: 20px;
+}
+.brief1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding: 2%;
+}
+.brief2 {
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.brief3 {
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.takeproduct {
+  /*   background-color: rgba(0, 126, 206, 0.1); */
+  background-color: #27a4f4;
+  padding: 5%;
+  color: white;
+}
+.takeproducthead {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 180%;
+  font-weight: 600;
+}
+.takeproductinfo {
+  margin-top: 25px;
+  font-size: 120%;
+  font-weight: 100;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.testimonial {
+  padding: 5%;
+  background-color: rgba(0, 126, 206, 0.1);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.testimonialcomment {
+  font-size: 180%;
+}
+.testimonialcustomer {
+  font-style: italic;
+  margin-top: 5px;
+  font-size: 105%;
+}
+.reasons {
+  background-color: #154c79;
+  color: white;
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.reasonss {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+  font-size: 130%;
+}
+.reasonshead {
+  text-align: center;
+  font-size: 180%;
+}
+.reasons1 {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.reasons2 {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.buying {
+  padding: 5%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 140%;
+  font-weight: 600;
+  background-color: whitesmoke;
+}
+.buyinghead {
+  font-size: 180%;
+  margin-bottom: 25px;
+}
+.buyingbutton button {
+  color: white;
+  background-color: #154c79;
+  border-radius: 5px;
+}
+.buyingbutton button:hover {
+  opacity: 0.9;
+  border: visible;
+}
+
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content ul {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+}
+
+.footer-content li {
+  margin: 0 10px;
+  display: inline;
+}
+
+.footer-content a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.developer-credits {
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.developer-credits a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.social-icons a {
+  margin-left: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
