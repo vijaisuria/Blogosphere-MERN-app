@@ -13,7 +13,8 @@ const fs = require("fs");
 require("dotenv").config();
 
 const salt = bcrypt.genSaltSync(10);
-const secret = "asdfe45we45w345wegw345werjktjwertkj";
+const defaultkey = "asdfe45we45w345wegw345werjktjwertkj";
+const secret = process.env.SECRET || defaultkey;
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
@@ -29,16 +30,21 @@ mongoose
   .catch((err) => console.log(err));
 
 app.post("/register", async (req, res) => {
-  const { username, password } = req.body;
   try {
-    const userDoc = await User.create({
-      username,
-      password: bcrypt.hashSync(password, salt),
-    });
-    res.json(userDoc);
-  } catch (e) {
-    console.log(e);
-    res.status(400).json(e);
+    const { username, password } = req.body;
+    try {
+      const userDoc = await User.create({
+        username,
+        password: bcrypt.hashSync(password, salt),
+      });
+      res.json(userDoc);
+    } catch (e) {
+      console.log(e);
+      res.status(400).json(e);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -52,13 +58,21 @@ app.post("/login", async (req, res) => {
   const passOk = bcrypt.compareSync(password, userDoc.password);
   if (passOk) {
     // logged in
-    jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
-      if (err) throw err;
-      res.cookie("token", token).json({
-        id: userDoc._id,
-        username,
-      });
-    });
+    jwt.sign(
+      { username, id: userDoc._id },
+      secret,
+      { expiresIn: "1h" },
+      (err, token) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Error signing JWT token" });
+        }
+        res.cookie("token", token).json({
+          id: userDoc._id,
+          username,
+        });
+      }
+    );
   } else {
     res.status(400).json("wrong credentials");
   }
@@ -67,7 +81,10 @@ app.post("/login", async (req, res) => {
 app.get("/profile", (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, (err, info) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      return res.status(401).json({ error: "Invalid token" });
+    }
     res.json(info);
   });
 });
@@ -112,12 +129,13 @@ app.put("/post", uploadMiddleware.single("file"), async (req, res) => {
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
     const { id, title, summary, content } = req.body;
+
     const postDoc = await Post.findById(id);
     const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
     if (!isAuthor) {
       return res.status(400).json("you are not the author");
     }
-    await postDoc.update({
+    await postDoc.updateOne({
       title,
       summary,
       content,

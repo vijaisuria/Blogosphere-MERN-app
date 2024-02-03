@@ -1,0 +1,41 @@
+```
+└── 📁client
+    └── .env
+    └── .env.example
+    └── .gitignore
+    └── package-lock.json
+    └── package.json
+    └── 📁public
+        └── blogosphere-logo.png
+        └── blogosphere-white-logo.png
+        └── index.html
+        └── logo.png
+        └── manifest.json
+        └── robots.txt
+    └── 📁src
+        └── App.js
+        └── 📁css
+            └── App.css
+            └── contact.css
+            └── forms.css
+            └── home.css
+            └── index.css
+        └── index.js
+        └── 📁pages
+            └── BlogsPage.js
+            └── Contact.jsx
+            └── CreatePost.js
+            └── EditPost.js
+            └── IndexPage.jsx
+            └── LoginPage.js
+            └── PostPage.js
+            └── RegisterPage.js
+        └── 📁partials
+            └── Footer.js
+            └── Layout.js
+            └── NavBar.js
+            └── Post.js
+        └── 📁utils
+            └── Editor.js
+            └── UserContext.js
+```
